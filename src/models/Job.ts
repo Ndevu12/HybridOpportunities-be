@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import CompanySchema, { ICompany } from './Company';
 import AppliedJobSchema, { IAppliedJob } from './AppliedJob';
-import { IUser } from './User'; // Import the IUser interface
+import { IUser } from './User';
 import { required } from 'joi';
 
 interface IRequirement {
@@ -47,7 +47,7 @@ const JobSchema: Schema = new Schema({
   role: { type: RequirementSchema, required: true },
   status: { type: String, required: true },
   appliedJobs: [{ type: Schema.Types.ObjectId, ref: 'AppliedJob', default: [] }],
-  userId: { type: Schema.Types.ObjectId, ref: 'User', required: true }, // Add userId field
+  userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 const Job = mongoose.model<IJob>('Job', JobSchema);

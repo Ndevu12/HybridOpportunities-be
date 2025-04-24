@@ -15,7 +15,7 @@ const AppliedJobSchema: Schema = new Schema({
   company: { type: String, default: '' },
   userId: { type: String, required: true },
   appliedAt: { type: Date, default: null },
-  cv: { type: String, default: '' }, // Add cv field to schema
+  cv: { type: String, default: '' },
 });
 
 const AppliedJob = mongoose.model<IAppliedJob>('AppliedJob', AppliedJobSchema);

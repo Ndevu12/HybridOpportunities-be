@@ -6,7 +6,7 @@ export interface IAddress extends Document {
   state: string;
   zipCode: string;
   country: string;
-  user: mongoose.Types.ObjectId; // Reference to the User model
+  user: mongoose.Types.ObjectId;
 }
 
 const AddressSchema: Schema = new Schema({
@@ -15,7 +15,7 @@ const AddressSchema: Schema = new Schema({
   state: { type: String, required: true },
   zipCode: { type: String, required: true },
   country: { type: String, required: true },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to the User model
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 export default mongoose.model<IAddress>('Address', AddressSchema);
