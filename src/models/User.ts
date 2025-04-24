@@ -20,7 +20,7 @@ export interface IUser extends Document {
   education?: IEducation[];
   experience?: IExperience[];
   skills?: ISkill[];
-  cv?: string; // Add cv property
+  cv?: string;
 }
 
 const UserSchema: Schema = new Schema({
@@ -37,7 +37,7 @@ const UserSchema: Schema = new Schema({
   education: [{ type: Schema.Types.ObjectId, ref: 'Education', default: [] }],
   experience: [{ type: Schema.Types.ObjectId, ref: 'Experience', default: [] }],
   skills: [{ type: Schema.Types.ObjectId, ref: 'Skill', default: [] }],
-  cv: { type: String, default: '' }, // Add cv field to schema
+  cv: { type: String, default: '' },
 });
 
 // Middleware to auto-populate sub-models

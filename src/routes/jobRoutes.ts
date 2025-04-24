@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import JobController from '../controllers/jobController';
 import { isAuth } from '../middleware/isAuth';
-import multer from '../middleware/Uploader'
+import upload from '../middleware/Uploader';
+import { RequestHandler } from 'express';
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.delete('/jobs/:jobId', isAuth, JobController.deleteJob);
 
 // Apply routes
 router.post('/jobs/:jobId/apply/existing', isAuth , JobController.applyWithExistingCV);
-router.post('/jobs/:jobId/apply/new', isAuth, multer.single('cv'), JobController.applyWithNewCV);
+// Use type assertion to work around the type compatibility issue
+router.post('/jobs/:jobId/apply/new', isAuth, upload.single('cv') as unknown as RequestHandler, JobController.applyWithNewCV);
 
 export default router;
